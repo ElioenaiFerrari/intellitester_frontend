@@ -26,8 +26,8 @@
         <v-list-item
           v-for="route in routes"
           :key="route.name"
-          :v-show="route.props.visible"
           :to="route.path"
+          v-show="route.props.visible"
           link
         >
           <v-list-item-icon>

@@ -1,5 +1,6 @@
 import AuthRepo from '../repo/auth';
 import * as R from 'ramda';
+import router from '../router';
 
 export default {
   namespaced: true,
@@ -19,6 +20,7 @@ export default {
             ({ data }) => commit('signin', data.token)
           )
         )
+        .then(() => router.push('/app/intellistester'))
         .catch(console.log);
     },
   },

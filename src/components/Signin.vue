@@ -65,8 +65,6 @@ export default {
       const data = this.fields.reduce(mount_object, {});
 
       this.$store.dispatch('auth/signin', data);
-
-      console.log(data);
     },
   },
 };
