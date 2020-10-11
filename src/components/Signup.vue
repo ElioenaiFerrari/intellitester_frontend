@@ -13,6 +13,7 @@
             :label="field.label"
             v-model="field.value"
             :rules="field.rules"
+            :type="field.type"
             color="white"
             required
             @input="validate()"
@@ -41,25 +42,28 @@ export default {
     valid: false,
     fields: [
       {
-        key: 'email',
-        label: 'E-mail',
-        value: '',
+        key: "email",
+        type: "email",
+        label: "E-mail",
+        value: "",
         rules: [
-          (v) => !!v || 'E-mail é obrigatório',
-          (v) => /.+@.+/.test(v) || 'E-mail inválido',
+          (v) => !!v || "E-mail é obrigatório",
+          (v) => /.+@.+/.test(v) || "E-mail inválido",
         ],
       },
       {
-        key: 'name',
-        label: 'Nome',
-        value: '',
-        rules: [(v) => !!v || 'Nome é obrigatório'],
+        key: "name",
+        type: "text",
+        label: "Nome",
+        value: "",
+        rules: [(v) => !!v || "Nome é obrigatório"],
       },
       {
-        key: 'password',
-        label: 'Senha',
-        value: '',
-        rules: [(v) => !!v || 'Senha é obrigatória'],
+        key: "password",
+        type: "password",
+        label: "Senha",
+        value: "",
+        rules: [(v) => !!v || "Senha é obrigatória"],
       },
     ],
   }),

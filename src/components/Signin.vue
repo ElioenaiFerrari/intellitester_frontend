@@ -12,6 +12,7 @@
         v-for="field in fields"
         :key="field.key"
         :label="field.label"
+        :type="field.type"
         v-model="field.value"
         :rules="field.rules"
         color="accent"
@@ -19,7 +20,14 @@
         required
       />
     </v-form>
-    <v-btn @click="signin()" block contained color="accent" :disabled="!valid">
+    <v-btn
+      x-large
+      @click="signin()"
+      block
+      contained
+      color="accent"
+      :disabled="!valid"
+    >
       ENTRAR
     </v-btn>
   </v-col>
@@ -31,19 +39,21 @@ export default {
     valid: false,
     fields: [
       {
-        key: 'email',
-        label: 'E-mail',
-        value: '',
+        key: "email",
+        label: "E-mail",
+        type: "email",
+        value: "",
         rules: [
-          (v) => !!v || 'E-mail é obrigatório',
-          (v) => /.+@.+/.test(v) || 'E-mail inválido',
+          (v) => !!v || "E-mail é obrigatório",
+          (v) => /.+@.+/.test(v) || "E-mail inválido",
         ],
       },
       {
-        key: 'password',
-        label: 'Senha',
-        value: '',
-        rules: [(v) => !!v || 'Senha é obrigatória'],
+        key: "password",
+        label: "Senha",
+        type: "password",
+        value: "",
+        rules: [(v) => !!v || "Senha é obrigatória"],
       },
     ],
   }),
@@ -64,7 +74,7 @@ export default {
 
       const data = this.fields.reduce(mount_object, {});
 
-      this.$store.dispatch('auth/signin', data);
+      this.$store.dispatch("auth/signin", data);
     },
   },
 };

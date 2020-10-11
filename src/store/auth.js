@@ -16,7 +16,7 @@ export default {
           R.ifElse(
             R.isNil,
             () => null,
-            ({ data }) => commit('signin', data.token)
+            ({ token }) => commit('signin', token)
           )
         )
         .then(() => dispatch('user/set_current_user', null, { root: true }))

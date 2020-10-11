@@ -20,7 +20,7 @@ export default {
   actions: {
     set_current_user({ commit }) {
       UserRepo.current()
-        .then(({ data }) => commit('set_current_user', data))
+        .then((data) => commit('set_current_user', data))
         .then(() => router.push('/app/intellitester'))
         .catch(console.log);
     },
