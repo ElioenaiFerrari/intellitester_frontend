@@ -1,16 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Signin from '../views/auth/Signin.vue';
+import Auth from '../views/Auth.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/auth/signin',
-    name: 'Login',
-    component: Signin,
+    path: '/auth',
+    name: 'Auth',
+    component: Auth,
     props: {
       icon: 'mdi-account',
+      visible: false,
     },
   },
 ];
