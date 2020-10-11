@@ -52,15 +52,19 @@
 </template>
 
 <script>
-import AuthUtil from './utils/auth';
-import * as R from 'ramda';
+import AuthUtil from "./utils/auth";
+import * as R from "ramda";
 
 export default {
-  name: 'App',
+  name: "App",
 
   computed: {
     routes() {
       return this.$router.options.routes;
+    },
+
+    current_user() {
+      return this.$store.getters["user/current_user"];
     },
   },
 

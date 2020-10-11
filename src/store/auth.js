@@ -1,6 +1,5 @@
 import AuthRepo from '../repo/auth';
 import * as R from 'ramda';
-import router from '../router';
 
 export default {
   namespaced: true,
@@ -11,7 +10,7 @@ export default {
     },
   },
   actions: {
-    signin({ commit }, payload) {
+    signin({ commit, dispatch }, payload) {
       AuthRepo.signin(payload)
         .then(
           R.ifElse(
@@ -20,7 +19,7 @@ export default {
             ({ data }) => commit('signin', data.token)
           )
         )
-        .then(() => router.push('/app/intellistester'))
+        .then(() => dispatch('user/set_current_user', null, { root: true }))
         .catch(console.log);
     },
   },
