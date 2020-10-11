@@ -1,5 +1,5 @@
 const AuthUtil = {
-  get_token: () => localStorage.getItem('token'),
+  get_token: () => sessionStorage.getItem('token'),
 };
 
 export default AuthUtil;

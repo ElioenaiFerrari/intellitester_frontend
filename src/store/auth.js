@@ -7,7 +7,7 @@ export default {
   state: {},
   mutations: {
     signin(_, payload) {
-      localStorage.setItem('token', payload);
+      sessionStorage.setItem('token', payload);
     },
   },
   actions: {

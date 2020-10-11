@@ -18,10 +18,10 @@ const routes = [
   },
   {
     path: '/app/intellitester',
-    name: 'app/intellitester',
+    name: 'Intellitester',
     component: Intellitester,
     props: {
-      icon: 'mdi-folder',
+      icon: 'mdi-robot',
       visible: true,
     },
   },
