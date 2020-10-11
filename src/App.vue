@@ -13,7 +13,9 @@
           <v-img :src="require('./assets/images/avatar.jpg')" />
         </v-list-item-avatar>
 
-        <v-list-item-title class="white--text">John Leider</v-list-item-title>
+        <v-list-item-title class="white--text">
+          {{ current_user.name }}
+        </v-list-item-title>
 
         <v-btn icon @click.stop="mini = !mini">
           <v-icon>mdi-chevron-left</v-icon>
