@@ -55,7 +55,19 @@ export default {
       }
     },
 
-    signin() {},
+    signin() {
+      const mount_object = (acc, { key, value }) => {
+        acc[key] = value;
+
+        return acc;
+      };
+
+      const data = this.fields.reduce(mount_object, {});
+
+      this.$store.dispatch('auth/signin', data);
+
+      console.log(data);
+    },
   },
 };
 </script>

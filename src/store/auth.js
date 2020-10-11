@@ -1,4 +1,5 @@
 import AuthRepo from '../repo/auth';
+import * as R from 'ramda';
 
 export default {
   namespaced: true,
@@ -11,7 +12,13 @@ export default {
   actions: {
     signin({ commit }, payload) {
       AuthRepo.signin(payload)
-        .then((payload) => commit('signin', payload))
+        .then(
+          R.ifElse(
+            R.isNil,
+            () => null,
+            ({ data }) => commit('signin', data.token)
+          )
+        )
         .catch(console.log);
     },
   },

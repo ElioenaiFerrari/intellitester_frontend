@@ -71,7 +71,17 @@ export default {
       }
     },
 
-    signup() {},
+    signup() {
+      const mount_object = (acc, { key, value }) => {
+        acc[key] = value;
+
+        return acc;
+      };
+
+      const data = this.fields.reduce(mount_object, {});
+
+      console.log(data);
+    },
   },
 };
 </script>
