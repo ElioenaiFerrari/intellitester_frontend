@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  created() {
+  beforeCreate() {
     this.$store.dispatch("bot/index");
   },
 
@@ -22,7 +22,7 @@ export default {
     },
 
     bots() {
-      return this.$store.getters["bot/index"];
+      return this.$store.getters["bot/bots"];
     },
   },
 };
