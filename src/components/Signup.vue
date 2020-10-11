@@ -16,6 +16,7 @@
             :type="field.type"
             color="white"
             required
+            @keydown.enter="signup()"
             @input="validate()"
           />
         </v-col>

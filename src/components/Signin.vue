@@ -16,6 +16,7 @@
         v-model="field.value"
         :rules="field.rules"
         color="accent"
+        @keydown.enter="signin()"
         @input="validate()"
         required
       />

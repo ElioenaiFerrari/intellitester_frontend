@@ -1,7 +1,13 @@
 <template>
-  <v-col cols="12">
-    <h1>{{ bot[0].name }}</h1>
-  </v-col>
+  <v-container fluid>
+    <v-list>
+      <v-list-item v-for="bot in bots" :key="bot._id">
+        <v-list-item-content>
+          <v-list-item-title>{{ bot.name }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-container>
 </template>
 
 <script>

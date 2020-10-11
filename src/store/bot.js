@@ -15,6 +15,7 @@ export default {
       state.bots = payload;
     },
   },
+
   actions: {
     index({ commit }, payload = null) {
       BotRepo.index(payload)
