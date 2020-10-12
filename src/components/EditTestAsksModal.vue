@@ -53,7 +53,7 @@ export default {
     mount_asks() {
       const get_ask = (answer) => answer.ask;
 
-      return this.test.answers.map(get_ask).join(", ");
+      return this.test.answers.map(get_ask).join("\n");
     },
 
     save() {
