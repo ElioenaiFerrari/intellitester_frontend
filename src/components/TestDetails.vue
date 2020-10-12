@@ -19,6 +19,13 @@
           >
             OK
           </h2>
+
+          <v-progress-circular
+            v-show="update_loading"
+            indeterminate
+            :size="30"
+            color="accent"
+          />
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-list>
@@ -44,6 +51,7 @@
                 mdi-check
               </v-icon>
             </v-list-item>
+            <EditTestAsksModal @update="update_test($event)" :test="test" />
           </v-list>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -61,8 +69,30 @@
 </template>
 
 <script>
+import EditTestAsksModal from "./EditTestAsksModal";
+
 export default {
   props: ["tests"],
+
+  components: {
+    EditTestAsksModal,
+  },
+
+  data() {
+    return { update_loading: false };
+  },
+
+  methods: {
+    update_test({ test, asks }) {
+      this.update_loading = true;
+
+      this.$store.dispatch("tests/update", {
+        bot_id: this.$route.params.bot_id,
+        test_id: test._id,
+        asks: asks.split(", "),
+      });
+    },
+  },
 };
 </script>
 

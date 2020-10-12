@@ -6,6 +6,12 @@ const TestsRepo = {
       .then(({ data }) => data)
       .catch(console.log);
   },
+
+  update: (bot_id, params) => {
+    return Api.put(`/app/tests/${bot_id}`, params)
+      .then(({ data }) => data)
+      .catch(console.log);
+  },
 };
 
 export default TestsRepo;

@@ -17,9 +17,15 @@ export default {
   },
 
   actions: {
-    index({ commit }, payload = null) {
-      TestsRepo.index(payload.bot_id)
+    index({ commit }, { bot_id }) {
+      TestsRepo.index(bot_id)
         .then((data) => commit('index', data))
+        .catch(console.log);
+    },
+
+    update(_, { bot_id, test_id, asks }) {
+      TestsRepo.update(bot_id, { test_id, asks })
+        .then(() => window.location.reload())
         .catch(console.log);
     },
   },
