@@ -8,16 +8,22 @@
           </h2>
           <v-spacer />
           <h2
-            v-show="!test.right"
+            v-show="!test.right && test.answers.length"
             class="text-body-1 accent--text font-weight-bold"
           >
             QUEBRADO
           </h2>
           <h2
-            v-show="test.right"
+            v-show="test.right && test.answers.length"
             class="text-body-1 success--text font-weight-bold"
           >
             OK
+          </h2>
+          <h2
+            v-show="!test.answers.length"
+            class="text-body-1 warning--text font-weight-bold"
+          >
+            VAZIO
           </h2>
 
           <v-progress-circular
@@ -89,7 +95,7 @@ export default {
       this.$store.dispatch("tests/update", {
         bot_id: this.$route.params.bot_id,
         test_id: test._id,
-        asks: asks.split(", "),
+        asks: asks.length ? asks.split(", ") : [],
       });
     },
   },
