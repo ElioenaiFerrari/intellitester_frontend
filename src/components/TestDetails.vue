@@ -77,7 +77,7 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
-    <Empty :show="!tests.length" />
+    <Empty :show="false" />
   </v-col>
 </template>
 
