@@ -1,6 +1,12 @@
 <template>
   <v-card class="mx-auto" max-width="344">
-    <v-btn small fab color="accent" @click="$emit('click-delete', bot)">
+    <v-btn
+      :disabled="bot.owner !== current_user._id"
+      small
+      fab
+      color="accent"
+      @click="$emit('click-delete', bot)"
+    >
       <v-icon>mdi-close</v-icon>
     </v-btn>
     <v-img
@@ -25,6 +31,12 @@
 <script>
 export default {
   props: ["bot"],
+
+  data() {
+    return {
+      current_user: this.$store.getters["user/current_user"],
+    };
+  },
 };
 </script>
 
