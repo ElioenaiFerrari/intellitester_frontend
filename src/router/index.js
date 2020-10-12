@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Auth from '../views/Auth.vue';
 import Intellitester from '../views/Intellitester.vue';
+import Tests from '../views/Tests.vue';
 import AuthUtil from '../utils/auth';
 
 Vue.use(VueRouter);
@@ -13,6 +14,15 @@ const routes = [
     component: Auth,
     props: {
       icon: 'mdi-account',
+      visible: false,
+    },
+  },
+  {
+    path: '/app/intellitester/:bot_id',
+    name: 'Tests',
+    component: Tests,
+    props: {
+      icon: 'mdi-robot',
       visible: false,
     },
   },
