@@ -8,7 +8,7 @@
     >
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          :disabled="!test.bot.team(current_user._id)"
+          :disabled="!test.bot.team.includes(current_user._id)"
           outlined
           color="accent"
           v-bind="attrs"
