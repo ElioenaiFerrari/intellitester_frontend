@@ -77,25 +77,20 @@
       </v-expansion-panel>
     </v-expansion-panels>
 
-    <v-col v-if="!tests.length" align="center" justify="center">
-      <v-img
-        contain
-        max-width="400"
-        :src="require('../assets/images/empty.png')"
-      />
-      <h2 class="text-title-2 accent--text">Nada por aqui...</h2>
-    </v-col>
+    <Empty :show="!tests.length" />
   </v-col>
 </template>
 
 <script>
 import EditTestAsksModal from "./EditTestAsksModal";
+import Empty from "./Empty";
 
 export default {
   props: ["tests"],
 
   components: {
     EditTestAsksModal,
+    Empty,
   },
 
   data() {

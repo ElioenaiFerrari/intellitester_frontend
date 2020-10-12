@@ -5,9 +5,14 @@
       @save="add_bot($event)"
       ref="form"
     />
-    <v-row>
+    <Empty :show="!bots.length" />
+    <v-row v-if="bots.length">
       <v-col cols="4" v-for="bot in bots" :key="bot._id">
-        <BotCard :bot="bot" @click-test="go_to_tests($event)" />
+        <BotCard
+          :bot="bot"
+          @click-delete="destroy($event)"
+          @click-test="go_to_tests($event)"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -16,11 +21,13 @@
 <script>
 import BotCard from "../components/BotCard";
 import AddBotModal from "../components/AddBotModal";
+import Empty from "../components/Empty";
 
 export default {
   components: {
     BotCard,
     AddBotModal,
+    Empty,
   },
 
   beforeCreate() {
@@ -40,6 +47,10 @@ export default {
   methods: {
     go_to_tests(bot) {
       return this.$router.push(`/app/intellitester/${bot._id}`);
+    },
+
+    destroy(bot) {
+      this.$store.dispatch("bot/destroy", { bot_id: bot._id });
     },
 
     add_bot(fields) {

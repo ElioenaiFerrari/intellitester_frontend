@@ -12,6 +12,12 @@ const BotRepo = {
       .then(({ data }) => data)
       .catch(console.log);
   },
+
+  destroy: (bot_id) => {
+    return Api.delete(`/app/bots/${bot_id}`)
+      .then(({ data }) => data)
+      .catch(console.log);
+  },
 };
 
 export default BotRepo;

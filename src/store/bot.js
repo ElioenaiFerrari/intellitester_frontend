@@ -25,7 +25,12 @@ export default {
 
     store({ dispatch }, payload = null) {
       BotRepo.store(payload)
-        .then(console.log)
+        .then(() => dispatch('index'))
+        .catch(console.log);
+    },
+
+    destroy({ dispatch }, { bot_id }) {
+      BotRepo.destroy(bot_id)
         .then(() => dispatch('index'))
         .catch(console.log);
     },
