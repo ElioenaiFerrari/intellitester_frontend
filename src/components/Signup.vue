@@ -83,9 +83,9 @@ export default {
         return acc;
       };
 
-      const data = this.fields.reduce(mount_object, {});
+      const params = this.fields.reduce(mount_object, {});
 
-      console.log(data);
+      this.$store.dispatch("auth/signup", params);
     },
   },
 };

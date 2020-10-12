@@ -7,12 +7,10 @@
       transition="dialog-bottom-transition"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-col align="right">
-          <v-btn outlined color="accent" v-bind="attrs" v-on="on" class="mb-10">
-            EDITAR
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
-        </v-col>
+        <v-btn outlined color="accent" v-bind="attrs" v-on="on">
+          EDITAR
+          <v-icon>mdi-pencil</v-icon>
+        </v-btn>
       </template>
       <v-card>
         <v-toolbar dark color="accent">

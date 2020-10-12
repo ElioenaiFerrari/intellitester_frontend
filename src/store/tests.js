@@ -28,5 +28,17 @@ export default {
         .then(() => window.location.reload())
         .catch(console.log);
     },
+
+    store(_, { bot_id, expected_node }) {
+      TestsRepo.store(bot_id, { expected_node })
+        .then(() => window.location.reload())
+        .catch(console.log);
+    },
+
+    destroy(_, { bot_id, test_id }) {
+      TestsRepo.destroy(bot_id, { test_id })
+        .then(() => window.location.reload())
+        .catch(console.log);
+    },
   },
 };

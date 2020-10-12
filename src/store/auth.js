@@ -22,5 +22,11 @@ export default {
         .then(() => dispatch('user/set_current_user', null, { root: true }))
         .catch(console.log);
     },
+
+    signup(_, payload) {
+      AuthRepo.signup(payload)
+        .then(() => alert('Usuário criado com sucesso'))
+        .catch(console.log);
+    },
   },
 };

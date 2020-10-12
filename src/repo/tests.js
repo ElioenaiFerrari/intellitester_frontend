@@ -12,6 +12,18 @@ const TestsRepo = {
       .then(({ data }) => data)
       .catch(console.log);
   },
+
+  store: (bot_id, params) => {
+    return Api.post(`/app/tests/${bot_id}`, params)
+      .then(({ data }) => data)
+      .catch(console.log);
+  },
+
+  destroy: (bot_id, params) => {
+    return Api.delete(`/app/tests/${bot_id}`, { params })
+      .then(({ data }) => data)
+      .catch(console.log);
+  },
 };
 
 export default TestsRepo;

@@ -6,6 +6,12 @@ const AuthRepo = {
       .then(({ data }) => data)
       .catch(console.log);
   },
+
+  signup: (params) => {
+    return Api.post('/auth/signup', params)
+      .then(({ data }) => data)
+      .catch(console.log);
+  },
 };
 
 export default AuthRepo;

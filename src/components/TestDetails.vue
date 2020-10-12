@@ -57,7 +57,13 @@
                 mdi-check
               </v-icon>
             </v-list-item>
-            <EditTestAsksModal @update="update_test($event)" :test="test" />
+            <v-row align="center" justify="flex-start" class="mt-10">
+              <v-btn @click="destroy(test)" class="accent" contained>
+                EXCLUIR
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+              <EditTestAsksModal @update="update_test($event)" :test="test" />
+            </v-row>
           </v-list>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -85,7 +91,7 @@ export default {
   },
 
   data() {
-    return { update_loading: false };
+    return { update_loading: false, bot_id: this.$route.params.bot_id };
   },
 
   methods: {
@@ -93,9 +99,16 @@ export default {
       this.update_loading = true;
 
       this.$store.dispatch("tests/update", {
-        bot_id: this.$route.params.bot_id,
+        bot_id: this.bot_id,
         test_id: test._id,
         asks: asks.length ? asks.split(", ") : [],
+      });
+    },
+
+    destroy(test) {
+      this.$store.dispatch("tests/destroy", {
+        bot_id: this.bot_id,
+        test_id: test._id,
       });
     },
   },
