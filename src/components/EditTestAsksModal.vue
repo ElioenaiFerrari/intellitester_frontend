@@ -7,7 +7,13 @@
       transition="dialog-bottom-transition"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn outlined color="accent" v-bind="attrs" v-on="on">
+        <v-btn
+          :disabled="!test.bot.team(current_user._id)"
+          outlined
+          color="accent"
+          v-bind="attrs"
+          v-on="on"
+        >
           EDITAR
           <v-icon>mdi-pencil</v-icon>
         </v-btn>
@@ -46,6 +52,7 @@ export default {
     return {
       show_dialog: false,
       asks: this.mount_asks(),
+      current_user: this.$store.getters["user/current_user"],
     };
   },
 

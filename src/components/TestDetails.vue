@@ -66,7 +66,12 @@
               </v-btn>
             </v-list-item>
             <v-row align="center" justify="flex-start" class="mt-10">
-              <v-btn @click="destroy(test)" color="accent" contained>
+              <v-btn
+                :disabled="!test.bot.team.includes(current_user._id)"
+                @click="destroy(test)"
+                color="accent"
+                contained
+              >
                 EXCLUIR
                 <v-icon>mdi-close</v-icon>
               </v-btn>
@@ -96,6 +101,7 @@ export default {
   data() {
     return {
       bot_id: this.$route.params.bot_id,
+      current_user: this.$store.getters["user/current_user"],
     };
   },
 

@@ -1,7 +1,7 @@
 <template>
   <v-card class="mx-auto" max-width="344">
     <v-btn
-      :disabled="bot.owner !== current_user._id"
+      :disabled="!bot.team.includes(current_user._id)"
       small
       fab
       color="accent"
