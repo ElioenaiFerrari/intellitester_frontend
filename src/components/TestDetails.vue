@@ -27,7 +27,7 @@
           </h2>
 
           <v-progress-circular
-            v-show="update_loading"
+            v-show="$store.getters['tests/update_loading']"
             indeterminate
             :size="30"
             color="accent"
@@ -91,13 +91,13 @@ export default {
   },
 
   data() {
-    return { update_loading: false, bot_id: this.$route.params.bot_id };
+    return {
+      bot_id: this.$route.params.bot_id,
+    };
   },
 
   methods: {
     update_test({ test, asks }) {
-      this.update_loading = true;
-
       this.$store.dispatch("tests/update", {
         bot_id: this.bot_id,
         test_id: test._id,

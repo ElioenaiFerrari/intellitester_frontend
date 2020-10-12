@@ -14,10 +14,10 @@
           indeterminate
           :size="30"
           color="accent"
-          v-show="store_loading"
+          v-show="$store.getters['tests/store_loading']"
         />
         <v-btn
-          v-show="!store_loading"
+          v-show="!$store.getters['tests/store_loading']"
           @click="addNode()"
           color="accent"
           outlined
@@ -46,8 +46,6 @@ export default {
 
   methods: {
     addNode() {
-      this.store_loading = true;
-
       this.$store.dispatch("tests/store", {
         bot_id: this.$route.params.bot_id,
         expected_node: this.expected_node,
@@ -60,7 +58,6 @@ export default {
   data() {
     return {
       expected_node: "",
-      store_loading: false,
     };
   },
 

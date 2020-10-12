@@ -4,13 +4,25 @@ export default {
   namespaced: true,
   state: {
     tests: [],
+    store_loading: false,
+    update_loading: false,
   },
 
   getters: {
     tests: (state) => state.tests,
+    store_loading: (state) => state.store_loading,
+    update_loading: (state) => state.update_loading,
   },
 
   mutations: {
+    store_loading(state, value) {
+      state.store_loading = value;
+    },
+
+    update_loading(state, value) {
+      state.update_loading = value;
+    },
+
     index(state, payload) {
       state.tests = payload;
     },
@@ -23,21 +35,31 @@ export default {
         .catch(console.log);
     },
 
-    update(_, { bot_id, test_id, asks }) {
+    update({ dispatch, commit }, { bot_id, test_id, asks }) {
+      commit('update_loading', true);
+
       TestsRepo.update(bot_id, { test_id, asks })
-        .then(() => window.location.reload())
+        .then(() => {
+          commit('update_loading', false);
+          dispatch('index', { bot_id });
+        })
         .catch(console.log);
     },
 
-    store(_, { bot_id, expected_node }) {
+    store({ dispatch, commit }, { bot_id, expected_node }) {
+      commit('store_loading', true);
+
       TestsRepo.store(bot_id, { expected_node })
-        .then(() => window.location.reload())
+        .then(() => {
+          commit('store_loading', false);
+          dispatch('index', { bot_id });
+        })
         .catch(console.log);
     },
 
-    destroy(_, { bot_id, test_id }) {
+    destroy({ dispatch }, { bot_id, test_id }) {
       TestsRepo.destroy(bot_id, { test_id })
-        .then(() => window.location.reload())
+        .then(() => dispatch('index', { bot_id }))
         .catch(console.log);
     },
   },
