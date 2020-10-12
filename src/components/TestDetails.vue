@@ -56,13 +56,21 @@
               <v-icon size="30" v-show="answer.ok" color="success">
                 mdi-check
               </v-icon>
+
+              <v-btn
+                text
+                @click="go_to_node(test.bot.dialog_url, answer.node)"
+                color="accent"
+              >
+                VER NÓ
+              </v-btn>
             </v-list-item>
             <v-row align="center" justify="flex-start" class="mt-10">
-              <v-btn @click="destroy(test)" class="accent" contained>
+              <v-btn @click="destroy(test)" color="accent" contained>
                 EXCLUIR
                 <v-icon>mdi-close</v-icon>
               </v-btn>
-              <EditTestAsksModal @update="update_test($event)" :test="test" />
+              <EditTestAsksModal @update="update($event)" :test="test" />
             </v-row>
           </v-list>
         </v-expansion-panel-content>
@@ -97,7 +105,11 @@ export default {
   },
 
   methods: {
-    update_test({ test, asks }) {
+    go_to_node(dialog_url, node) {
+      window.open(`${dialog_url}#node=${node}`, "_blank");
+    },
+
+    update({ test, asks }) {
       this.$store.dispatch("tests/update", {
         bot_id: this.bot_id,
         test_id: test._id,

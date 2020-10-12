@@ -76,6 +76,13 @@ export default {
           rules: [(v) => !!v || "URL obrigatória"],
         },
         {
+          key: "dialog_url",
+          label: "URL do diálogo",
+          value: "",
+          type: "text-field",
+          rules: [(v) => !!v || "URL obrigatória"],
+        },
+        {
           key: "skill_id",
           label: "ID da skill",
           value: "",
