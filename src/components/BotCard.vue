@@ -11,7 +11,7 @@
     </v-btn>
     <v-img
       contain
-      src="https://cdn.vivotech.com.br/vivo-tech/wp-content/uploads/2018/08/13162940/bot_para_que_serve.jpg"
+      :src="require('../assets/images/bot-card.png')"
       height="200px"
     ></v-img>
 
