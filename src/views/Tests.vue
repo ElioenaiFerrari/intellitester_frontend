@@ -3,7 +3,22 @@
     <v-expansion-panels>
       <v-expansion-panel v-for="test in tests" :key="test._id">
         <v-expansion-panel-header>
-          {{ test.expected_node }}
+          <h2 class="text-body-1">
+            Nó esperado: <b>{{ test.expected_node }}</b>
+          </h2>
+          <v-spacer />
+          <h2
+            v-show="!test.right"
+            class="text-body-1 accent--text font-weight-bold"
+          >
+            QUEBRADO
+          </h2>
+          <h2
+            v-show="test.right"
+            class="text-body-1 success--text font-weight-bold"
+          >
+            OK
+          </h2>
         </v-expansion-panel-header>
         <v-expansion-panel-content>
           <v-list>

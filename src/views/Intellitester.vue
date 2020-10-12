@@ -1,34 +1,31 @@
 <template>
   <v-container fluid>
-    <v-list>
+    <AddBotModal
+      @close="show_dialog = false"
+      :show_dialog="show_dialog"
+      @save="add_bot($event)"
+      ref="form"
+    />
+    <v-row>
       <v-col cols="4" v-for="bot in bots" :key="bot._id">
-        <v-card class="mx-auto" max-width="344">
-          <v-img
-            contain
-            src="https://cdn.vivotech.com.br/vivo-tech/wp-content/uploads/2018/08/13162940/bot_para_que_serve.jpg"
-            height="200px"
-          ></v-img>
-
-          <v-card-title>{{ bot.name }}</v-card-title>
-
-          <v-card-subtitle>{{ bot.status }}</v-card-subtitle>
-
-          <v-card-actions>
-            <v-spacer />
-            <v-btn color="accent" @click="go_to_tests(bot)" outlined text
-              >DETALHES</v-btn
-            >
-          </v-card-actions>
-        </v-card>
+        <BotCard :bot="bot" @click-test="go_to_tests($event)" />
       </v-col>
-    </v-list>
+    </v-row>
   </v-container>
 </template>
 
 <script>
+import BotCard from "../components/BotCard";
+import AddBotModal from "../components/AddBotModal";
+
 export default {
+  components: {
+    BotCard,
+    AddBotModal,
+  },
+
   data: () => ({
-    show: false,
+    show_dialog: false,
   }),
 
   beforeCreate() {
@@ -48,6 +45,20 @@ export default {
   methods: {
     go_to_tests(bot) {
       return this.$router.push(`/app/intellitester/${bot._id}`);
+    },
+
+    add_bot(fields) {
+      this.show_dialog = false;
+
+      const mount_object = (acc, { key, value }) => {
+        acc[key] = value;
+
+        return acc;
+      };
+
+      const params = [...fields].reduce(mount_object, {});
+
+      this.$store.dispatch("bot/store", params);
     },
   },
 };

@@ -22,5 +22,12 @@ export default {
         .then((data) => commit('index', data))
         .catch(console.log);
     },
+
+    store({ dispatch }, payload = null) {
+      BotRepo.store(payload)
+        .then(console.log)
+        .then(() => dispatch('index'))
+        .catch(console.log);
+    },
   },
 };
