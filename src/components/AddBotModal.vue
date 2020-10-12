@@ -7,13 +7,13 @@
       transition="dialog-bottom-transition"
     >
       <template v-slot:activator="{ on, attrs }">
-        <v-btn outlined color="accent" s v-bind="attrs" v-on="on" class="mb-10">
+        <v-btn outlined color="accent" v-bind="attrs" v-on="on" class="mb-10">
           ADICIONAR BOT
         </v-btn>
       </template>
       <v-card>
         <v-toolbar dark color="accent">
-          <v-btn icon dark @click="$emit('close')">
+          <v-btn icon dark @click="show_dialog = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>INFORMAÇÕES NECESSÁRIAS</v-toolbar-title>
@@ -52,14 +52,13 @@
 
 <script>
 export default {
-  props: ["show_dialog"],
-
   data() {
     return {
       valid: false,
       notifications: false,
       sound: true,
       widgets: false,
+      show_dialog: false,
 
       fields: [
         {
@@ -113,6 +112,8 @@ export default {
     validate() {
       if (this.$refs.form.validate()) {
         this.$emit("save", this.fields);
+
+        this.show_dialog = false;
       }
     },
   },

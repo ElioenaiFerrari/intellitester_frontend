@@ -1,7 +1,6 @@
 <template>
   <v-container fluid>
     <AddBotModal
-      @close="show_dialog = false"
       :show_dialog="show_dialog"
       @save="add_bot($event)"
       ref="form"
@@ -24,10 +23,6 @@ export default {
     AddBotModal,
   },
 
-  data: () => ({
-    show_dialog: false,
-  }),
-
   beforeCreate() {
     this.$store.dispatch("bot/index");
   },
@@ -48,8 +43,6 @@ export default {
     },
 
     add_bot(fields) {
-      this.show_dialog = false;
-
       const mount_object = (acc, { key, value }) => {
         acc[key] = value;
 
