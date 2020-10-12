@@ -113,7 +113,7 @@ export default {
       this.$store.dispatch("tests/update", {
         bot_id: this.bot_id,
         test_id: test._id,
-        asks: asks.length ? asks.split("\n") : [],
+        asks: asks.length ? asks.trim().split("\n") : [],
       });
     },
 
