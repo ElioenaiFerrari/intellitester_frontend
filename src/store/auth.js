@@ -9,6 +9,7 @@ export default {
       sessionStorage.setItem('token', payload);
     },
   },
+
   actions: {
     signin({ commit, dispatch }, payload) {
       AuthRepo.signin(payload)

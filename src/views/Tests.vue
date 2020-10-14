@@ -5,6 +5,7 @@
         <v-text-field
           v-model="expected_node"
           outlined
+          type="text"
           label="Nó esperado"
           color="accent"
         />
@@ -32,7 +33,7 @@
 </template>
 
 <script>
-import TestDetails from "../components/TestDetails";
+import TestDetails from '../components/TestDetails';
 export default {
   components: {
     TestDetails,
@@ -40,34 +41,33 @@ export default {
 
   computed: {
     tests() {
-      return this.$store.getters["tests/tests"];
+      return this.$store.getters['tests/tests'];
     },
   },
 
   methods: {
     addNode() {
-      this.$store.dispatch("tests/store", {
+      this.$store.dispatch('tests/store', {
         bot_id: this.$route.params.bot_id,
         expected_node: this.expected_node,
       });
 
-      this.expected_node = "";
+      this.expected_node = '';
     },
   },
 
   data() {
     return {
-      expected_node: "",
+      expected_node: '',
     };
   },
 
   beforeCreate() {
-    return this.$store.dispatch("tests/index", {
+    return this.$store.dispatch('tests/index', {
       bot_id: this.$route.params.bot_id,
     });
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>
